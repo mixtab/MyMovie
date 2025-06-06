@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.ui.theme
+package com.mtabarkevych.mymovie.core.theme
 
 import android.app.Activity
 import android.os.Build
