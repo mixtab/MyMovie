@@ -1,6 +1,6 @@
-package com.mtabarkevych.mymovie.movies.di.modules
+package com.mtabarkevych.mymovie.di.modules
 
-import com.mtabarkevych.mymovie.movies.presentation.HomeViewModel
+import com.mtabarkevych.mymovie.movies.presentation.home.HomeViewModel
 import com.mtabarkevych.mymovie.movies.presentation.favorites.FavoritesViewModel
 import com.mtabarkevych.mymovie.movies.presentation.all_movies.AllMoviesViewModel
 import org.koin.core.module.dsl.viewModelOf
