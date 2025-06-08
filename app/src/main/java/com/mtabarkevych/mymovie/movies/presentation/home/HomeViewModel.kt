@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.movies.presentation
+package com.mtabarkevych.mymovie.movies.presentation.home
 
 import com.mtabarkevych.mymovie.core.presentation.MVIViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

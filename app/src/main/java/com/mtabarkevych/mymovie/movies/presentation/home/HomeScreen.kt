@@ -1,5 +1,6 @@
-package com.mtabarkevych.mymovie.movies.presentation
+package com.mtabarkevych.mymovie.movies.presentation.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,10 +17,10 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mtabarkevych.mymovie.movies.presentation.all_movies.AllMoviesScreenRoute
-import com.mtabarkevych.mymovie.movies.presentation.favorites.FavoritesScreen
 import com.mtabarkevych.mymovie.movies.presentation.favorites.FavoritesScreenRoute
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -28,15 +29,16 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeScreenRoute(viewModel: HomeViewModel = koinViewModel()) {
     val state = viewModel.uiState.collectAsState().value
 
-    HomeScreen(state) { viewModel.sendUiEvent(it) }
+    HomeScreen(state)
 }
 
 
 @Composable
-fun HomeScreen(uiState: HomeUiState, processUiEvent: (HomeUiEvent) -> Unit) {
+fun HomeScreen(uiState: HomeUiState) {
     val scope = rememberCoroutineScope()
     Column(
         modifier = Modifier
+            .background(Color.Gray)
             .statusBarsPadding()
             .navigationBarsPadding()
     ) {
@@ -61,13 +63,17 @@ fun HomeScreen(uiState: HomeUiState, processUiEvent: (HomeUiEvent) -> Unit) {
                 )
             }
         }
+   /*     val viewModel: AllMoviesViewModel = koinViewModel()
+        val favoritesViewModel: FavoritesViewModel = koinViewModel()*/
+
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-        ) {
-            when (uiState.tabs[selectedTabIndex.value]) {
+        ) { pageIndex ->
+
+            when (uiState.tabs[pageIndex]) {
                 HomeTabs.ALL_MOVIES -> {
                     AllMoviesScreenRoute()
                 }
@@ -76,7 +82,6 @@ fun HomeScreen(uiState: HomeUiState, processUiEvent: (HomeUiEvent) -> Unit) {
                     FavoritesScreenRoute()
                 }
             }
-
         }
     }
 }
@@ -84,6 +89,6 @@ fun HomeScreen(uiState: HomeUiState, processUiEvent: (HomeUiEvent) -> Unit) {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(HomeUiState()) {}
+    HomeScreen(HomeUiState())
 
 }

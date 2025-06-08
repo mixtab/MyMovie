@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.movies.presentation
+package com.mtabarkevych.mymovie.movies.presentation.home
 
 import androidx.annotation.StringRes
 import com.mtabarkevych.mymovie.R

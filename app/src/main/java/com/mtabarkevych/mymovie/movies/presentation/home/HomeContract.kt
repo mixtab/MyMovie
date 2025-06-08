@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.movies.presentation
+package com.mtabarkevych.mymovie.movies.presentation.home
 
 import com.mtabarkevych.mymovie.core.presentation.UiEffect
 import com.mtabarkevych.mymovie.core.presentation.UiEvent
