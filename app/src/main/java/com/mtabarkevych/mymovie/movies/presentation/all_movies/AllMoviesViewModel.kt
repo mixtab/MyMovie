@@ -1,13 +1,18 @@
 package com.mtabarkevych.mymovie.movies.presentation.all_movies
 
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.paging.cachedIn
 import com.mtabarkevych.mymovie.R
 import com.mtabarkevych.mymovie.core.presentation.MVIViewModel
 import com.mtabarkevych.mymovie.movies.data.MoviesRepository
+import com.mtabarkevych.mymovie.movies.domain.model.Movie
 import com.mtabarkevych.mymovie.movies.domain.usecase.GetAllMoviesUseCase
 import com.mtabarkevych.mymovie.movies.presentation.favorites.FavoritesUiEffect
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AllMoviesViewModel(
@@ -15,31 +20,38 @@ class AllMoviesViewModel(
     private val moviesRepository: MoviesRepository
 ) : MVIViewModel<AllMoviesUiState, AllMoviesUiEvent, AllMoviesUiEffect>() {
 
-    val movies = getAllMoviesUseCase(viewModelScope)
+    val movies = getAllMoviesUseCase.invoke()
+        .cachedIn(viewModelScope)
 
     private val _uiState = MutableStateFlow(AllMoviesUiState())
     override val uiState = _uiState.asStateFlow()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), AllMoviesUiState())
 
 
     override fun processUiEvent(event: AllMoviesUiEvent) {
         when (event) {
-            is AllMoviesUiEvent.OnLikeClicked -> {
-                viewModelScope.launch {
-                    val updatedFavoriteState = !event.movie.isFavorite
-                    moviesRepository.setMovie(event.movie.copy(isFavorite = updatedFavoriteState))
+            is AllMoviesUiEvent.OnLikeClicked -> handleLikeClicked(event.movie)
+            is AllMoviesUiEvent.OnShareClicked -> shareMovie(event.movie)
+        }
+    }
 
-                    setUiEffect {
-                        if (updatedFavoriteState)
-                            AllMoviesUiEffect.ShowMessage(R.string.movie_removed)
-                        else
-                            AllMoviesUiEffect.ShowMessage(R.string.movie_removed)
-                    }
-                }
-            }
+    private fun handleLikeClicked(movie: Movie) {
+        viewModelScope.launch {
+            val updatedFavoriteState = !movie.isFavorite
+            moviesRepository.setMovie(movie.copy(isFavorite = updatedFavoriteState))
 
-            is AllMoviesUiEvent.OnShareClicked -> setUiEffect {
-                AllMoviesUiEffect.ShowShareMovie(event.movie)
+            setUiEffect {
+                if (updatedFavoriteState)
+                    AllMoviesUiEffect.ShowMessage(R.string.movie_liked)
+                else
+                    AllMoviesUiEffect.ShowMessage(R.string.movie_removed)
             }
+        }
+    }
+
+    private fun shareMovie(movie: Movie) {
+        setUiEffect {
+            AllMoviesUiEffect.ShowShareMovie(movie)
         }
     }
 

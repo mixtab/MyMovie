@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mtabarkevych.mymovie.movies.presentation.MovieCard
+import com.mtabarkevych.mymovie.movies.presentation.all_movies.MovieCard
 import com.mtabarkevych.mymovie.movies.presentation.extensions.toFormattedMonthYear
 import org.koin.androidx.compose.koinViewModel
 

@@ -21,7 +21,6 @@ abstract class MVIViewModel<State : UiState, Event : UiEvent, Effect : UiEffect>
     val effect = _effect.asSharedFlow()
 
     fun sendUiEvent(event: Event) {
-        Log.i(TAG_EVENT, event.toString())
         processUiEvent(event)
     }
 
@@ -30,14 +29,8 @@ abstract class MVIViewModel<State : UiState, Event : UiEvent, Effect : UiEffect>
     protected fun setUiEffect(builder: suspend () -> Effect) {
         viewModelScope.launch {
             val effectValue = builder()
-            Log.i(TAG_EFFECT, effectValue.toString())
             _effect.emit(effectValue)
         }
     }
 
-    companion object {
-        const val TAG_STATE = "ScreenUiState"
-        private const val TAG_EVENT = "ScreenUiEvent"
-        private const val TAG_EFFECT = "ScreenUiEffect"
-    }
 }

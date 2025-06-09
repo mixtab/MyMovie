@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.core.presentation
+package com.mtabarkevych.mymovie.core.presentation.extensions
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

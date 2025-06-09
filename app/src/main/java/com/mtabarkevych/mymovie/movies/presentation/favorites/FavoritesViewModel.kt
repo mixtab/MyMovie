@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.mtabarkevych.mymovie.R
 import com.mtabarkevych.mymovie.core.presentation.MVIViewModel
 import com.mtabarkevych.mymovie.movies.data.MoviesRepository
+import com.mtabarkevych.mymovie.movies.domain.repository.IMoviesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -12,7 +13,7 @@ import kotlinx.coroutines.launch
 
 
 class FavoritesViewModel(
-    private val moviesRepository: MoviesRepository
+    private val moviesRepository: IMoviesRepository
 ) : MVIViewModel<FavoritesUiState, FavoritesUiEvent, FavoritesUiEffect>() {
 
     private val _uiState = MutableStateFlow(FavoritesUiState())

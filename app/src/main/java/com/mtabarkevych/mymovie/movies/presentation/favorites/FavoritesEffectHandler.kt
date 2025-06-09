@@ -3,7 +3,7 @@ package com.mtabarkevych.mymovie.movies.presentation.favorites
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.mtabarkevych.mymovie.core.presentation.collectWithLifecycle
+import com.mtabarkevych.mymovie.core.presentation.extensions.collectWithLifecycle
 import com.mtabarkevych.mymovie.movies.presentation.extensions.shareMovie
 import kotlinx.coroutines.flow.Flow
 
