@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.ui.theme
+package com.mtabarkevych.mymovie.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

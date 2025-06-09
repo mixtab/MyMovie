@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyMovie</string>
+
+    <string name="all_movies_title">All</string>
+    <string name="favorites_title">Favorites</string>
+
+
+    <string name="movie_liked">Added to favorites</string>
+    <string name="movie_removed">Movie Removed</string>
+
 </resources>
