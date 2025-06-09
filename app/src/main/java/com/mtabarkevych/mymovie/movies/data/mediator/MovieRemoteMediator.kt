@@ -13,7 +13,7 @@ import com.mtabarkevych.mymovie.movies.data.remote.source.MoviesDataSource
 import com.mtabarkevych.mymovie.movies.domain.model.mapper.toEntity
 
 @OptIn(ExperimentalPagingApi::class)
-class MovieRemoteMediator(
+open class MovieRemoteMediator(
     private val db: MyMovieDatabase,
     private val moviesDataSource: MoviesDataSource,
 ) : RemoteMediator<Int, MovieEntity>() {

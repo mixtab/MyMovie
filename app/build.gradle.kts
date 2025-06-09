@@ -30,7 +30,21 @@ android {
 
         buildConfigField("String", "MOVIE_API_KEY", localProperties["MOVIE_API_KEY"] as String)
     }
-
+    buildFeatures {
+        buildConfig = true
+    }
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE.txt",
+                "META-INF/LICENSE-notice.md",
+                "META-INF/LICENSE",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt"
+            )
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -50,6 +64,9 @@ android {
     buildFeatures {
         compose = true
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -63,13 +80,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.paging.common.android)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    implementation(libs.core.ktx)
+    implementation(libs.androidx.junit.ktx)
+
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
@@ -89,10 +103,34 @@ dependencies {
     implementation(libs.paging.runtime)
 
     implementation(libs.kotlinx.serialization.json)
-    implementation (libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.compose)
 
     implementation(libs.threetenabp)
 
     implementation(libs.coil.compose)
+
+    // Unit Tests
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.robolectric)
+    testImplementation(kotlin("test"))
+    testImplementation(libs.ktor.client.mock)
+    testImplementation (libs.kotlinx.coroutines.test.v173)
+    testImplementation ("app.cash.turbine:turbine:1.0.0")
+    testImplementation (libs.mockk)
+
+    // Android Tests
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.androidx.junit.v121)
+    androidTestImplementation(libs.androidx.core)
+    androidTestImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    // Debug Test
+    debugImplementation(libs.androidx.ui.test.manifest)
 
 }

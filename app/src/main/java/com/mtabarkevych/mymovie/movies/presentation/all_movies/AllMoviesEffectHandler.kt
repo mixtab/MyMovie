@@ -1,11 +1,9 @@
 package com.mtabarkevych.mymovie.movies.presentation.all_movies
 
-import android.content.Context
-import android.content.Intent
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.mtabarkevych.mymovie.core.presentation.collectWithLifecycle
+import com.mtabarkevych.mymovie.core.presentation.extensions.collectWithLifecycle
 import com.mtabarkevych.mymovie.movies.presentation.extensions.shareMovie
 import kotlinx.coroutines.flow.Flow
 

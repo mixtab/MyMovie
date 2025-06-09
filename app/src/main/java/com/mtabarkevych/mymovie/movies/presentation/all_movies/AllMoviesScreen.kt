@@ -24,7 +24,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.mtabarkevych.mymovie.core.presentation.ui.PullToRefreshBox
 import com.mtabarkevych.mymovie.movies.domain.model.Movie
-import com.mtabarkevych.mymovie.movies.presentation.MovieCard
 import com.mtabarkevych.mymovie.movies.presentation.extensions.toFormattedMonthYear
 import kotlinx.coroutines.flow.flowOf
 import org.koin.androidx.compose.koinViewModel
