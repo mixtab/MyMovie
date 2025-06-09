@@ -1,0 +1,28 @@
+This application allows users to browse movies from [The Movie Database API](https://developer.themoviedb.org/reference/discover-movie), group them by release month, and manage a list of favorites.
+
+## 📱 Functional Features
+
+- **Main Screen with Two Tabs**:
+  - **All** – Paginated list of movies grouped by month
+  - **Favorites** – Locally saved bookmarked movies
+- **Add/Remove Favorites** – Updates reflect immediately on both tabs
+- **Pull-to-Refresh** – Refresh the movie list
+- **Offline Support** – View cached first page of movies without internet
+- **Movie Sharing** – Share movies via other apps
+
+## 🛠 Technical Stack
+
+- **Language**: Kotlin
+- **Architecture**: MVI
+- **UI**: Jetpack Compose
+- **Database**: Room (SQLite)
+- **Dependency Injection**: Koin
+- **Networking**: Ktor
+- **Testing**: Unit tests for core logic
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+2. **Add your TMDB API key** to `local.properties`: MOVIE_API_KEY=your_tmdb_api_key
+(You can get your key at TMDB Developer Portal:https://developer.themoviedb.org.)
+3. **Build and run the project**
