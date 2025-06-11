@@ -3,16 +3,16 @@ This application allows users to browse movies from [The Movie Database API](htt
 ## 📱 Functional Features
 
 - **Main Screen with Two Tabs**:
-  - **All** – Paginated list of movies grouped by month
-  - **Favorites** – Locally saved bookmarked movies
+- **All** – Paginated list of movies grouped by month
+- **Favorites** – Locally saved bookmarked movies
 - **Add/Remove Favorites** – Updates reflect immediately on both tabs
 - **Pull-to-Refresh** – Refresh the movie list
 - **Offline Support** – View cached first page of movies without internet
 - **Movie Sharing** – Share movies via other apps
 
-![Splash](images/myMovie1.jpg)
-![All Movies](images/myMovie2.jpg)
-![Favorites](images/myMovie3.jpg)
+![Splash](myMovie1.jpg)
+![All Movies](myMovie2.jpg)
+![Favorites](myMovie3.jpg)
 
 ## 🛠 Technical Stack
 
