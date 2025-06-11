@@ -1,14 +1,11 @@
 package com.mtabarkevych.mymovie.movies.presentation.all_movies
 
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.cachedIn
 import com.mtabarkevych.mymovie.R
 import com.mtabarkevych.mymovie.core.presentation.MVIViewModel
 import com.mtabarkevych.mymovie.movies.data.MoviesRepository
 import com.mtabarkevych.mymovie.movies.domain.model.Movie
-import com.mtabarkevych.mymovie.movies.domain.usecase.GetAllMoviesUseCase
-import com.mtabarkevych.mymovie.movies.presentation.favorites.FavoritesUiEffect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,11 +13,10 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AllMoviesViewModel(
-    getAllMoviesUseCase: GetAllMoviesUseCase,
     private val moviesRepository: MoviesRepository
 ) : MVIViewModel<AllMoviesUiState, AllMoviesUiEvent, AllMoviesUiEffect>() {
 
-    val movies = getAllMoviesUseCase.invoke()
+    val movies = moviesRepository.getAllMovies()
         .cachedIn(viewModelScope)
 
     private val _uiState = MutableStateFlow(AllMoviesUiState())

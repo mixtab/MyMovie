@@ -42,16 +42,16 @@ interface MovieDao {
     )
     fun pagingSource(): PagingSource<Int, MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE isFavorite = 1 ORDER BY releaseDate ASC")
+    @Query("SELECT * FROM movies WHERE is_favorite = 1 ORDER BY release_date ASC")
     fun getFavorites(): List<MovieEntity>
 
-    @Query("SELECT * FROM movies WHERE isFavorite = 1 ORDER BY releaseDate ASC")
+    @Query("SELECT * FROM movies WHERE is_favorite = 1 ORDER BY release_date ASC")
     fun getFavoritesFlow(): Flow<List<MovieEntity>>
 
-    @Query("UPDATE movies SET isFavorite = :isFavorite WHERE id = :movieId")
+    @Query("UPDATE movies SET is_favorite = :isFavorite WHERE id = :movieId")
     suspend fun updateFavorite(movieId: Int, isFavorite: Boolean)
 
-    @Query("DELETE FROM movies WHERE isFavorite = 0")
+    @Query("DELETE FROM movies WHERE is_favorite = 0")
     suspend fun clearNotFavorites()
 }
 

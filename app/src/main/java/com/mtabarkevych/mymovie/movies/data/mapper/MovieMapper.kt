@@ -1,4 +1,4 @@
-package com.mtabarkevych.mymovie.movies.domain.model.mapper
+package com.mtabarkevych.mymovie.movies.data.mapper
 
 import com.mtabarkevych.mymovie.movies.data.local.model.MovieEntity
 import com.mtabarkevych.mymovie.movies.data.remote.model.MovieDto

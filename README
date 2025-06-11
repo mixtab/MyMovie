@@ -10,6 +10,10 @@ This application allows users to browse movies from [The Movie Database API](htt
 - **Offline Support** – View cached first page of movies without internet
 - **Movie Sharing** – Share movies via other apps
 
+![Splash](myMovie1.png)
+![All Movies](myMovie2.png)
+![Favorites](myMovie3.png)
+
 ## 🛠 Technical Stack
 
 - **Language**: Kotlin

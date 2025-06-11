@@ -10,7 +10,7 @@ import com.mtabarkevych.mymovie.core.domain.DataResult
 import com.mtabarkevych.mymovie.movies.data.local.model.MovieEntity
 import com.mtabarkevych.mymovie.movies.data.local.model.RemoteKeysEntity
 import com.mtabarkevych.mymovie.movies.data.remote.source.MoviesDataSource
-import com.mtabarkevych.mymovie.movies.domain.model.mapper.toEntity
+import com.mtabarkevych.mymovie.movies.data.mapper.toEntity
 
 @OptIn(ExperimentalPagingApi::class)
 open class MovieRemoteMediator(

@@ -117,7 +117,6 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation(libs.ktor.client.mock)
     testImplementation (libs.kotlinx.coroutines.test.v173)
-    testImplementation ("app.cash.turbine:turbine:1.0.0")
     testImplementation (libs.mockk)
 
     // Android Tests
