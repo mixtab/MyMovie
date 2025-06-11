@@ -87,7 +87,7 @@ class AllMoviesViewModelTest {
 
             val effect = awaitItem()
             assertTrue(effect is AllMoviesUiEffect.ShowShareMovie)
-            assertEquals(movie, (effect as AllMoviesUiEffect.ShowShareMovie).movie)
+            assertEquals(movie, effect.movie)
             cancelAndIgnoreRemainingEvents()
         }
     }
