@@ -3,7 +3,6 @@ package com.mtabarkevych.mymovie.movies.presentation.all_movies
 import app.cash.turbine.test
 import com.mtabarkevych.mymovie.movies.data.MoviesRepository
 import com.mtabarkevych.mymovie.movies.domain.model.Movie
-import com.mtabarkevych.mymovie.movies.domain.usecase.GetAllMoviesUseCase
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -26,7 +25,6 @@ class AllMoviesViewModelTest {
 
     private lateinit var viewModel: AllMoviesViewModel
 
-    private val fakeUseCase = mockk<GetAllMoviesUseCase>(relaxed = true)
     private val repository = mockk<MoviesRepository>(relaxed = true)
 
     private val testDispatcher = StandardTestDispatcher()
@@ -52,10 +50,9 @@ class AllMoviesViewModelTest {
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
 
-        every { fakeUseCase.invoke() } returns emptyFlow()
+        every { repository.getAllMovies() } returns emptyFlow()
 
         viewModel = AllMoviesViewModel(
-            getAllMoviesUseCase = fakeUseCase,
             moviesRepository = repository
         )
     }

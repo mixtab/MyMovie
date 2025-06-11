@@ -3,8 +3,8 @@ package com.mtabarkevych.mymovie.movies.data
 import com.mtabarkevych.mymovie.movies.data.local.dao.MovieDao
 import com.mtabarkevych.mymovie.movies.data.local.model.MovieEntity
 import com.mtabarkevych.mymovie.movies.domain.model.Movie
-import com.mtabarkevych.mymovie.movies.domain.model.mapper.toDomain
-import com.mtabarkevych.mymovie.movies.domain.model.mapper.toEntity
+import com.mtabarkevych.mymovie.movies.data.mapper.toDomain
+import com.mtabarkevych.mymovie.movies.data.mapper.toEntity
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
